@@ -60,7 +60,7 @@ export default function InputBar({
           )}
           {chat?.image && (
             <span className="badge" title={`Image: ${chat.image.name}`}>
-              🖼 {chat.image.name}
+              📸 {chat.image.name}
             </span>
           )}
           <button className="btn-ghost btn-sm" onClick={onClearFiles} title="Clear attached files">
@@ -84,7 +84,7 @@ export default function InputBar({
             disabled={isUploadingImg || disabled}
             title="Upload image (PNG or JPG)"
           >
-            {isUploadingImg ? <span className="spinner" /> : <span>🖼</span>}
+            {isUploadingImg ? <span className="spinner" /> : <span>📸</span>}
           </button>
 
           <input

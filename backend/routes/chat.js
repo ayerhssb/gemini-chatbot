@@ -147,6 +147,7 @@ router.post('/chats/:id/message', async (req, res) => {
       text,
       attachedDocument: chat.documentName || null,
       attachedImage: chat.image ? chat.image.name : null,
+      imageData: chat.image ? `data:${chat.image.mimeType};base64,${chat.image.data}` : null,
     });
 
     // For Gemini, send history that DOES NOT include the new user message — we

@@ -20,14 +20,14 @@ function Message({ m, imagePreview }) {
         {isUser && (m.attachedDocument || m.attachedImage) && (
           <div className="msg-attachments">
             {m.attachedDocument && <span className="attach-chip">📄 {m.attachedDocument}</span>}
-            {m.attachedImage && <span className="attach-chip">🖼 {m.attachedImage}</span>}
+            {m.attachedImage && <span className="attach-chip">📸 {m.attachedImage}</span>}
           </div>
         )}
 
-        {/* If user attached an image AND we have a local preview, show it inline on first user msg */}
-        {isUser && m.attachedImage && imagePreview && (
+        {/* If user attached an image AND we have local imageData, show it inline */}
+        {isUser && m.attachedImage && m.imageData && (
           <div className="msg-image">
-            <img src={imagePreview} alt={m.attachedImage} />
+            <img src={m.imageData} alt={m.attachedImage} />
           </div>
         )}
 
@@ -84,7 +84,7 @@ export default function ChatWindow({ chat, imagePreview, isSending }) {
               <div className="tile-text">Upload a PDF or TXT, then ask the bot to summarize, extract, or explain.</div>
             </div>
             <div className="tile">
-              <div className="tile-icon">🖼</div>
+              <div className="tile-icon">📸</div>
               <div className="tile-title">Image understanding</div>
               <div className="tile-text">Add a PNG or JPG and ask the bot what it sees, who's in it, or what's happening.</div>
             </div>
