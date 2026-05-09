@@ -8,6 +8,8 @@ export default function InputBar({
   isUploadingDoc,
   isUploadingImg,
   disabled,
+  chat,
+  onClearFiles,
 }) {
   const [text, setText] = useState('');
   const docInputRef = useRef(null);
@@ -49,6 +51,23 @@ export default function InputBar({
 
   return (
     <div className="input-bar">
+      {(chat?.documentName || chat?.image) && (
+        <div className="staged-files">
+          {chat?.documentName && (
+            <span className="badge" title={`Document: ${chat.documentName}`}>
+              📄 {chat.documentName}
+            </span>
+          )}
+          {chat?.image && (
+            <span className="badge" title={`Image: ${chat.image.name}`}>
+              🖼 {chat.image.name}
+            </span>
+          )}
+          <button className="btn-ghost btn-sm" onClick={onClearFiles} title="Clear attached files">
+            clear
+          </button>
+        </div>
+      )}
       <div className="input-shell">
         <div className="input-actions">
           <button
@@ -105,7 +124,7 @@ export default function InputBar({
         </button>
       </div>
       <div className="input-foot">
-        Powered by Google Gemini · Files & messages stay in this session only.
+        Files & messages stay in this session only.
       </div>
     </div>
   );

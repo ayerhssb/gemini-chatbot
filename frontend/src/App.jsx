@@ -116,9 +116,13 @@ export default function App() {
               ...prev,
               // Replace last (optimistic) user msg with the server one + append bot reply
               messages: [...prev.messages.slice(0, -1), result.user, result.bot],
+              documentName: null,
+              image: null,
             }
           : prev
       );
+      delete previewCache.current[id];
+      setImagePreview(null);
       await refreshList();
     } catch (err) {
       setError(err.message);
@@ -215,21 +219,6 @@ export default function App() {
                 API key missing
               </span>
             )}
-            {chat?.documentName && (
-              <span className="badge" title={`Document: ${chat.documentName}`}>
-                📄 {chat.documentName}
-              </span>
-            )}
-            {chat?.image && (
-              <span className="badge" title={`Image: ${chat.image.name}`}>
-                🖼 {chat.image.name}
-              </span>
-            )}
-            {(chat?.documentName || chat?.image) && (
-              <button className="btn-ghost btn-sm" onClick={handleClearFiles} title="Clear attached files">
-                clear
-              </button>
-            )}
           </div>
         </header>
 
@@ -254,6 +243,8 @@ export default function App() {
           isUploadingDoc={isUploadingDoc}
           isUploadingImg={isUploadingImg}
           disabled={!healthOk}
+          chat={chat}
+          onClearFiles={handleClearFiles}
         />
       </main>
     </div>

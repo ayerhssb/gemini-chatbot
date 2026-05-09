@@ -3,17 +3,17 @@
   /* Warm-paper editorial palette */
   --bg: #F5F0E6;            /* paper */
   --bg-elev: #FBF7EE;       /* lighter card */
-  --ink: #1F1B16;           /* near-black */
-  --ink-muted: #6E665A;
-  --ink-soft: #968B7C;
+  --ink: #2B1D38;           /* dark purple-black */
+  --ink-muted: #736280;
+  --ink-soft: #A294AC;
   --rule: #E5DCC8;          /* hairline */
   --rule-strong: #C9BDA3;
 
-  --accent: #C24A2C;        /* terracotta */
-  --accent-2: #6B3F1D;      /* deep umber */
-  --warn: #B5651D;
+  --accent: #8E44AD;        /* purple */
+  --accent-2: #5B2C6F;      /* dark purple */
+  --warn: #E67E22;
   --bot-bubble: #FFFCF5;
-  --user-bubble: #1F1B16;
+  --user-bubble: #2B1D38;
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Manrope', system-ui, sans-serif;
@@ -37,8 +37,8 @@ body {
   -webkit-font-smoothing: antialiased;
   /* Subtle paper grain via layered radial gradients */
   background-image:
-    radial-gradient(circle at 12% 18%, rgba(194, 74, 44, 0.04) 0, transparent 36%),
-    radial-gradient(circle at 88% 82%, rgba(107, 63, 29, 0.05) 0, transparent 40%);
+    radial-gradient(circle at 12% 18%, rgba(142, 68, 173, 0.04) 0, transparent 36%),
+    radial-gradient(circle at 88% 82%, rgba(91, 44, 111, 0.05) 0, transparent 40%);
   background-attachment: fixed;
 }
 
@@ -54,6 +54,7 @@ body {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  min-height: 0;
   border-left: 1px solid var(--rule);
   background: var(--bg);
 }
@@ -83,7 +84,7 @@ body {
   cursor: pointer;
   transition: transform 0.15s ease, background 0.15s ease;
 }
-.btn-primary:hover { background: #2A241D; transform: translateY(-1px); }
+.btn-primary:hover { background: #3E2A50; transform: translateY(-1px); }
 .btn-primary:active { transform: translateY(0); }
 .btn-primary .plus { font-size: 18px; line-height: 1; }
 
@@ -162,7 +163,7 @@ body {
   transition: opacity 0.12s ease, background 0.12s ease, color 0.12s ease;
 }
 .chat-item:hover .chat-item-del { opacity: 1; }
-.chat-item-del:hover { background: rgba(194, 74, 44, 0.1); color: var(--accent); }
+.chat-item-del:hover { background: rgba(142, 68, 173, 0.1); color: var(--accent); }
 
 .sidebar-footer {
   margin-top: 16px;
@@ -478,7 +479,16 @@ body {
 }
 .input-shell:focus-within {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(194, 74, 44, 0.12), var(--shadow-soft);
+  box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.12), var(--shadow-soft);
+}
+
+.staged-files {
+  max-width: 760px;
+  margin: 0 auto 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .input-actions {

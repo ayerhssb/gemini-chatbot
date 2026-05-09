@@ -161,6 +161,8 @@ router.post('/chats/:id/message', async (req, res) => {
 
     const botMsg = chatStore.addMessage(chat.id, { role: 'model', text: reply });
 
+    chatStore.clearFiles(chat.id);
+
     res.json({ user: userMsg, bot: botMsg });
   } catch (err) {
     console.error('Message error:', err);
